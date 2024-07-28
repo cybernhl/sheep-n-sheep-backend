@@ -46,3 +46,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'sheep-n-sheep'
+include(":backend")

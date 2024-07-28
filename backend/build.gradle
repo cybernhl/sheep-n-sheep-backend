@@ -1,0 +1,56 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+//    alias(libs.plugins.jetbrains.kotlin.JVM)
+    id 'maven-publish'
+}
+
+group = 'com.whksoft.private'
+version = '0.0.1-SNAPSHOT'
+description = 'sps'
+
+sourceSets {
+    main {
+        java.srcDirs("../src/main/java")
+        resources.srcDirs('../src/main/resources')
+    }
+    test{
+        java.srcDirs('../src/test/java')
+    }
+}
+
+java{
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility JavaVersion.VERSION_11
+}
+
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    api libs.org.springframework.boot.spring.boot.starter
+    api libs.org.projectlombok.lombok
+    annotationProcessor libs.org.projectlombok.lombok
+    api libs.org.springframework.boot.spring.boot.starter.web
+    api libs.com.google.code.gson.gson
+    testImplementation libs.org.springframework.boot.spring.boot.starter.test
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
