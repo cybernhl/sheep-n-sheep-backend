@@ -1,0 +1,35 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = 'com.whksoft.private'
+version = '0.0.1-SNAPSHOT'
+description = 'sps'
+
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    api libs.org.springframework.boot.spring.boot.starter
+    api libs.org.projectlombok.lombok
+    annotationProcessor libs.org.projectlombok.lombok
+    api libs.org.springframework.boot.spring.boot.starter.web
+    api libs.com.google.code.gson.gson
+    testImplementation libs.org.springframework.boot.spring.boot.starter.test
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}

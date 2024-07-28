@@ -1,0 +1,48 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenCentral()
+        maven {
+            url = uri('https://repo.maven.apache.org/maven2/')
+        }
+        google()
+        maven {
+            url = uri('https://maven.pkg.jetbrains.space/public/p/compose/dev')
+        }
+        maven {
+            url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+        }
+        maven {
+            url = uri("https://jitpack.io/")
+        }
+        mavenLocal()
+    }
+}
+
+dependencyResolutionManagement {
+    // Ref : https://stackoverflow.com/questions/74299038/in-a-kotlin-multiplatform-mobile-gradle-build-what-is-an-ivy-repository-wher
+    //Build was configured to prefer settings repositories over project repositories but repository 'ivy' was added by build file
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven {
+            url = uri('https://repo.maven.apache.org/maven2/')
+        }
+        google()
+        maven {
+            url = uri('https://maven.pkg.jetbrains.space/public/p/compose/dev')
+        }
+        maven {
+            url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+        }
+        maven {
+            url = uri("https://jitpack.io/")
+        }
+        mavenLocal()
+    }
+}
+
+rootProject.name = 'sheep-n-sheep'
